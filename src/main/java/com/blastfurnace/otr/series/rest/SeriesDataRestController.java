@@ -1,4 +1,4 @@
-package com.blastfurnace.otr.rest;
+package com.blastfurnace.otr.series.rest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.blastfurnace.otr.data.series.service.model.SeriesDataWrapper;
-import com.blastfurnace.otr.rest.adapter.SeriesDataAdapter;
 import com.blastfurnace.otr.rest.request.QueryData;
+import com.blastfurnace.otr.series.adapter.SeriesDataAdapter;
 import com.blastfurnace.otr.service.response.GenericResponse;
 
 @RestController

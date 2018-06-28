@@ -1,4 +1,4 @@
-package com.blastfurnace.otr.rest.adapter.impl;
+package com.blastfurnace.otr.series.adapter.impl;
 
 import java.util.List;
 import java.util.Map;
@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.blastfurnace.otr.data.series.service.model.SeriesDataWrapper;
-import com.blastfurnace.otr.rest.adapter.SeriesDataAdapter;
 import com.blastfurnace.otr.rest.request.QueryData;
-import com.blastfurnace.otr.rest.service.SeriesDataService;
+import com.blastfurnace.otr.series.adapter.SeriesDataAdapter;
+import com.blastfurnace.otr.series.service.SeriesDataService;
 import com.blastfurnace.otr.service.response.GenericResponse;
 
 
