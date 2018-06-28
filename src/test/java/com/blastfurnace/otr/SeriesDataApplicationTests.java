@@ -31,7 +31,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.blastfurnace.otr.service.model.SeriesDataWrapper;
+import com.blastfurnace.otr.data.series.service.model.SeriesDataWrapper;
 
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.Assert.assertTrue;

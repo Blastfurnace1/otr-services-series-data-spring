@@ -100,7 +100,7 @@
                     </goals>
 
                     <configuration>
-                        <outputDirectory>C:/workspace/otr-services-episode-data-spring/src/main/webapp/WEB-INF/lib</outputDirectory>
+                        <outputDirectory>C:/workspace/otr-services-series-data-spring/src/main/webapp/WEB-INF/lib</outputDirectory>
                         <resources>
                             <resource>
                                 <directory>C:/workspace/otr-data-services-spring/target</directory>
@@ -202,7 +202,7 @@
                     </goals>
 
                     <configuration>
-                        <outputDirectory>C:/workspace/otr-services-audio-data-spring/src/main/webapp/WEB-INF/lib</outputDirectory>
+                        <outputDirectory>C:/workspace/otr-services-series-data-spring/src/main/webapp/WEB-INF/lib</outputDirectory>
                         <resources>
                             <resource>
                                 <directory>C:/workspace/otr-data-services-spring/target</directory>

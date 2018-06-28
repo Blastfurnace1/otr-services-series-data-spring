@@ -1,4 +1,4 @@
-package com.blastfurnace.otr.rest.adapter;
+package com.blastfurnace.otr.rest.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,17 +7,18 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.blastfurnace.otr.model.Series;
-import com.blastfurnace.otr.reflection.ObjectData;
-import com.blastfurnace.otr.reflection.Utils;
+import com.blastfurnace.otr.data.series.SeriesService;
+import com.blastfurnace.otr.data.series.model.Series;
+import com.blastfurnace.otr.data.series.service.model.SeriesDataWrapper;
 import com.blastfurnace.otr.rest.request.QueryData;
-import com.blastfurnace.otr.rest.response.GenericRestResponse;
-import com.blastfurnace.otr.service.SeriesService;
-import com.blastfurnace.otr.service.model.SeriesDataWrapper;
+import com.blastfurnace.otr.rest.service.SeriesDataService;
+import com.blastfurnace.otr.service.response.GenericResponse;
+import com.blastfurnace.otr.util.reflection.ObjectData;
+import com.blastfurnace.otr.util.reflection.Utils;
 
 
-@Component("SeriesDataAdapter")
-public class SeriesDataAdapterImpl implements SeriesDataAdapter {
+@Component("SeriesDatumService")
+public class SeriesDataServiceImpl implements SeriesDataService {
 
 	@Autowired
 	private SeriesService service;
@@ -27,8 +28,8 @@ public class SeriesDataAdapterImpl implements SeriesDataAdapter {
 	 * @see com.blastfurnace.otr.rest.adapter.SeriesDataAdapter#get(java.lang.Long)
 	 */
 	@Override
-	public GenericRestResponse<SeriesDataWrapper> get(Long id) {
-		GenericRestResponse<SeriesDataWrapper> response = new GenericRestResponse<SeriesDataWrapper>(null);
+	public GenericResponse<SeriesDataWrapper> get(Long id) {
+		GenericResponse<SeriesDataWrapper> response = new GenericResponse<SeriesDataWrapper>(null);
 		try {
 			SeriesDataWrapper series = service.get(id);
 			response.setPayload(series);
@@ -53,9 +54,9 @@ public class SeriesDataAdapterImpl implements SeriesDataAdapter {
 	 * @see com.blastfurnace.otr.rest.adapter.SeriesDataAdapter#query(com.blastfurnace.otr.rest.request.QueryData)
 	 */
 	@Override
-	public GenericRestResponse<List<Map<String,Object>>> query(QueryData qry) {
+	public GenericResponse<List<Map<String,Object>>> query(QueryData qry) {
 		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
-		GenericRestResponse<List<Map<String,Object>>> response = new GenericRestResponse<List<Map<String,Object>>>(list);
+		GenericResponse<List<Map<String,Object>>> response = new GenericResponse<List<Map<String,Object>>>(list);
 		try {
 			String[] columns = Utils.getFields(qry);
 
@@ -101,8 +102,8 @@ public class SeriesDataAdapterImpl implements SeriesDataAdapter {
 	 * @see com.blastfurnace.otr.rest.adapter.SeriesDataAdapter#getResultsCount(com.blastfurnace.otr.rest.request.QueryData)
 	 */
 	@Override
-	public GenericRestResponse<Long> getResultsCount(QueryData qry) {
-		GenericRestResponse<Long> response = new GenericRestResponse<Long>(null);
+	public GenericResponse<Long> getResultsCount(QueryData qry) {
+		GenericResponse<Long> response = new GenericResponse<Long>(null);
 		try {
 			Long count = service.getResultsCount(qry);
 			response.setPayload(count);
@@ -126,9 +127,9 @@ public class SeriesDataAdapterImpl implements SeriesDataAdapter {
 	 * @see com.blastfurnace.otr.rest.adapter.SeriesDataAdapter#delete(java.lang.Long)
 	 */
 	@Override
-	public GenericRestResponse<String> delete(Long  id) {
+	public GenericResponse<String> delete(Long  id) {
 
-		GenericRestResponse<String> response = new GenericRestResponse<String>("");
+		GenericResponse<String> response = new GenericResponse<String>("");
 		try {
 			service.delete(id);
 		} catch (Exception e) {
@@ -145,12 +146,17 @@ public class SeriesDataAdapterImpl implements SeriesDataAdapter {
 	 * @see com.blastfurnace.otr.rest.adapter.SeriesDataAdapter#save(com.blastfurnace.otr.model.Series)
 	 */
 	@Override
-	public GenericRestResponse<SeriesDataWrapper> save(SeriesDataWrapper series) {
-		GenericRestResponse<SeriesDataWrapper> response = new GenericRestResponse<SeriesDataWrapper>(null);
+	public GenericResponse<SeriesDataWrapper> save(SeriesDataWrapper series) {
+		GenericResponse<SeriesDataWrapper> response = new GenericResponse<SeriesDataWrapper>(null);
+		if (series == null) {
+			response.setStatus(-50l);
+			response.setMessage("Unable to save Record - nothing to save");
+			return response;
+		} 
 		try {
 			SeriesDataWrapper newSeries = service.save(series);
 			response.setPayload(newSeries);
-			if (series == null) {
+			if (newSeries == null) {
 				response.setStatus(-50l);
 				response.setMessage("Unable to save Record");
 			}

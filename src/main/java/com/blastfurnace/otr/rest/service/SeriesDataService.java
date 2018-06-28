@@ -1,4 +1,4 @@
-package com.blastfurnace.otr.rest.adapter;
+package com.blastfurnace.otr.rest.service;
 
 import java.util.List;
 import java.util.Map;
@@ -7,7 +7,7 @@ import com.blastfurnace.otr.data.series.service.model.SeriesDataWrapper;
 import com.blastfurnace.otr.rest.request.QueryData;
 import com.blastfurnace.otr.service.response.GenericResponse;
 
-public interface SeriesDataAdapter {
+public interface SeriesDataService {
 
 	GenericResponse<SeriesDataWrapper> get(Long id);
 

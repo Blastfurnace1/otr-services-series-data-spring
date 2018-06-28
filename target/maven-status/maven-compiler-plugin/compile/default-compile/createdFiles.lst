@@ -1,4 +1,6 @@
 com\blastfurnace\otr\rest\SeriesDataRestController.class
-com\blastfurnace\otr\rest\adapter\SeriesDataAdapterImpl.class
+com\blastfurnace\otr\rest\service\SeriesDataService.class
+com\blastfurnace\otr\rest\adapter\impl\SeriesDataAdapterImpl.class
 com\blastfurnace\otr\rest\adapter\SeriesDataAdapter.class
+com\blastfurnace\otr\rest\service\impl\SeriesDataServiceImpl.class
 com\blastfurnace\otr\SeriesDataApplication.class

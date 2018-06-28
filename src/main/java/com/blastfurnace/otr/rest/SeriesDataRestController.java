@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.blastfurnace.otr.data.series.service.model.SeriesDataWrapper;
 import com.blastfurnace.otr.rest.adapter.SeriesDataAdapter;
 import com.blastfurnace.otr.rest.request.QueryData;
-import com.blastfurnace.otr.rest.response.GenericRestResponse;
-import com.blastfurnace.otr.service.model.SeriesDataWrapper;
+import com.blastfurnace.otr.service.response.GenericResponse;
 
 @RestController
 @RequestMapping("/rest")
@@ -28,49 +28,49 @@ public class SeriesDataRestController {
 
     @RequestMapping(value = "/get/{id:[\\d]+}", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<GenericRestResponse<SeriesDataWrapper>>  get(@PathVariable long  id) {
-    	GenericRestResponse<SeriesDataWrapper> g = seriesAdapter.get(id);
-    	ResponseEntity<GenericRestResponse<SeriesDataWrapper>> response = new ResponseEntity<GenericRestResponse<SeriesDataWrapper>>(g, HttpStatus.OK);
+    public ResponseEntity<GenericResponse<SeriesDataWrapper>>  get(@PathVariable long  id) {
+    	GenericResponse<SeriesDataWrapper> g = seriesAdapter.get(id);
+    	ResponseEntity<GenericResponse<SeriesDataWrapper>> response = new ResponseEntity<GenericResponse<SeriesDataWrapper>>(g, HttpStatus.OK);
     	return response;
     }
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<List<GenericRestResponse<List<Map<String, Object>>>>> query(@RequestParam Map<String, String> queryParameters) {
+    public ResponseEntity<List<GenericResponse<List<Map<String, Object>>>>> query(@RequestParam Map<String, String> queryParameters) {
 
     	QueryData qry = new QueryData(queryParameters);
     	qry.setSort("title");
-    	GenericRestResponse<List<Map<String,Object>>> g = seriesAdapter.query(qry);
-    	List<GenericRestResponse<List<Map<String, Object>>>> list = new ArrayList<GenericRestResponse<List<Map<String, Object>>>>();
+    	GenericResponse<List<Map<String,Object>>> g = seriesAdapter.query(qry);
+    	List<GenericResponse<List<Map<String, Object>>>> list = new ArrayList<GenericResponse<List<Map<String, Object>>>>();
     	list.add(g);
-    	ResponseEntity<List<GenericRestResponse<List<Map<String, Object>>>>> response = new ResponseEntity<List<GenericRestResponse<List<Map<String, Object>>>>>(list, HttpStatus.OK);
+    	ResponseEntity<List<GenericResponse<List<Map<String, Object>>>>> response = new ResponseEntity<List<GenericResponse<List<Map<String, Object>>>>>(list, HttpStatus.OK);
 
     	return response;
     }
      
     @RequestMapping(value = "/delete/{id:[\\d]+}", method = RequestMethod.DELETE)
     @ResponseBody
-    public ResponseEntity<GenericRestResponse<String>> delete(@PathVariable long  id) {
+    public ResponseEntity<GenericResponse<String>> delete(@PathVariable long  id) {
     	
-    	GenericRestResponse<String> g = seriesAdapter.delete(id);
-    	ResponseEntity<GenericRestResponse<String>> response = new ResponseEntity<GenericRestResponse<String>>(g, HttpStatus.OK);
+    	GenericResponse<String> g = seriesAdapter.delete(id);
+    	ResponseEntity<GenericResponse<String>> response = new ResponseEntity<GenericResponse<String>>(g, HttpStatus.OK);
 
     	return response;
     }
     
     @RequestMapping(value = "/resultsCount", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<GenericRestResponse<Long>> getResultsCount(@RequestParam Map<String, String> queryParameters) {
+    public ResponseEntity<GenericResponse<Long>> getResultsCount(@RequestParam Map<String, String> queryParameters) {
     	 QueryData qry = new QueryData(queryParameters);
-    	 GenericRestResponse<Long> g = seriesAdapter.getResultsCount(qry);
-    	return new ResponseEntity<GenericRestResponse<Long>>(g, HttpStatus.OK);
+    	 GenericResponse<Long> g = seriesAdapter.getResultsCount(qry);
+    	return new ResponseEntity<GenericResponse<Long>>(g, HttpStatus.OK);
     }
     
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<GenericRestResponse<SeriesDataWrapper>> save(SeriesDataWrapper series) {
-    	GenericRestResponse<SeriesDataWrapper> g = seriesAdapter.save(series);
-    	ResponseEntity<GenericRestResponse<SeriesDataWrapper>> response = new ResponseEntity<GenericRestResponse<SeriesDataWrapper>>(g, HttpStatus.OK);
+    public ResponseEntity<GenericResponse<SeriesDataWrapper>> save(SeriesDataWrapper series) {
+    	GenericResponse<SeriesDataWrapper> g = seriesAdapter.save(series);
+    	ResponseEntity<GenericResponse<SeriesDataWrapper>> response = new ResponseEntity<GenericResponse<SeriesDataWrapper>>(g, HttpStatus.OK);
     	return response;
     }
 
