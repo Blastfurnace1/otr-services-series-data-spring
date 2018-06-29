@@ -1,6 +1,6 @@
-C:\workspace\otr-services-series-data-spring\src\main\java\com\blastfurnace\otr\rest\adapter\impl\SeriesDataAdapterImpl.java
-C:\workspace\otr-services-series-data-spring\src\main\java\com\blastfurnace\otr\rest\service\impl\SeriesDataServiceImpl.java
-C:\workspace\otr-services-series-data-spring\src\main\java\com\blastfurnace\otr\rest\service\SeriesDataService.java
-C:\workspace\otr-services-series-data-spring\src\main\java\com\blastfurnace\otr\rest\adapter\SeriesDataAdapter.java
-C:\workspace\otr-services-series-data-spring\src\main\java\com\blastfurnace\otr\rest\SeriesDataRestController.java
-C:\workspace\otr-services-series-data-spring\src\main\java\com\blastfurnace\otr\SeriesDataApplication.java
+C:\workspace\otr-services-series-data-spring\src\main\java\com\blastfurnace\otr\series\service\impl\SeriesDataServiceImpl.java
+C:\workspace\otr-services-series-data-spring\src\main\java\com\blastfurnace\otr\Application.java
+C:\workspace\otr-services-series-data-spring\src\main\java\com\blastfurnace\otr\series\adapter\impl\SeriesDataAdapterImpl.java
+C:\workspace\otr-services-series-data-spring\src\main\java\com\blastfurnace\otr\series\rest\SeriesDataRestController.java
+C:\workspace\otr-services-series-data-spring\src\main\java\com\blastfurnace\otr\series\adapter\SeriesDataAdapter.java
+C:\workspace\otr-services-series-data-spring\src\main\java\com\blastfurnace\otr\series\service\SeriesDataService.java
