@@ -1,6 +1,7 @@
 com\blastfurnace\otr\Application.class
 com\blastfurnace\otr\series\adapter\impl\SeriesDataAdapterImpl.class
 com\blastfurnace\otr\series\adapter\SeriesDataAdapter.class
+com\blastfurnace\otr\servlet\AudioPingServlet.class
 com\blastfurnace\otr\series\service\impl\SeriesDataServiceImpl.class
 com\blastfurnace\otr\series\rest\SeriesDataRestController.class
 com\blastfurnace\otr\series\service\SeriesDataService.class
