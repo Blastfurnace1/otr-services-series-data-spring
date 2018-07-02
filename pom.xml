@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.blastfurnace</groupId>
-    <artifactId>otr-series-data</artifactId>
+    <artifactId>otr-services-series-data</artifactId>
     <version>0.1.0</version>
 
     <parent>
@@ -12,6 +12,17 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.0.2.RELEASE</version>
     </parent>
+    
+   	<repositories>
+    	<repository>
+    		<id>blastfurnace</id>
+    		<url>http://localhost:8081/artifactory/libs-release-local</url>
+    		<snapshots>
+        		<enabled>true</enabled>
+        		<updatePolicy>never</updatePolicy>
+    		</snapshots>
+		</repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -22,17 +33,13 @@
 		</dependency>
 		<dependency>
     		<groupId>com.blastfurnace</groupId>
-    		<artifactId>otr-data-services</artifactId>
-    		<version>1.0</version>
-    		<scope>system</scope>
-    		<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/otr-series-data.jar</systemPath>
+    		<artifactId>otr-series-data</artifactId>
+    		<version>0.1.0</version>
 		</dependency>
 		<dependency>
     		<groupId>com.blastfurnace</groupId>
-    		<artifactId>otr-utilities</artifactId>
-    		<version>1.0</version>
-    		<scope>system</scope>
-    		<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/otr-utils.jar</systemPath>
+    		<artifactId>otr-utils</artifactId>
+    		<version>0.1.0</version>
 		</dependency>
     </dependencies>
 
