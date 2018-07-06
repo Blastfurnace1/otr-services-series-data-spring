@@ -19,6 +19,8 @@ import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,7 +33,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.blastfurnace.otr.data.series.service.model.SeriesDataWrapper;
+import com.blastfurnace.otr.utils.UtilitiesApplicationTest;
 
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.junit.Assert.assertTrue;
@@ -41,49 +43,15 @@ import static org.junit.Assert.assertTrue;
  *
  * @author Jim Blackson
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@TestPropertySource(properties = {"management.port=9001", "test.server="})
-public class SeriesServiceApplicationTests {
+public class SeriesServiceApplicationTests extends UtilitiesApplicationTest {
 
-	@LocalServerPort
-	private int port;
-
-	@Value("${local.management.port}")
-	private int mgt;
-
-	@Autowired
-	private TestRestTemplate testRestTemplate;
-	
-	private String testServer = "http://localhost:";
-	
-	@Test
-	public void shouldReturn200WhenSendingRequestToManagementEndpoint() throws Exception {
-		@SuppressWarnings("rawtypes")
-		ResponseEntity<Map> entity = this.testRestTemplate.getForEntity(
-				testServer + this.mgt + "/actuator/info", Map.class);
-
-		then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
-	}
+	private static final Logger log = LoggerFactory.getLogger(SeriesServiceApplicationTests.class); 
 	
 	@Test
 	public void WhenSendingGetRequestToControllerReponseObject() throws Exception {
-		
-		@SuppressWarnings("rawtypes")
-		ResponseEntity<Map> entity = this.testRestTemplate.getForEntity(
-				"http://localhost:" + this.port + "/rest/get/1", Map.class);
+		log.info("Series Service Tests - Start");
 
-		then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
-		
-		HttpHeaders httpHeaders = this.testRestTemplate
-				  .headForHeaders("http://localhost:" + this.port + "/rest/get/1");
-		
-		assertTrue(httpHeaders.getContentType()
-				  .includes(MediaType.APPLICATION_JSON));
-		
-		SeriesDataWrapper series = this.testRestTemplate.getForObject(
-				"http://localhost:" + this.port + "/rest/get/1", SeriesDataWrapper.class);
-
+		log.info("Series Service Tests - End");
 	}
 	
 }

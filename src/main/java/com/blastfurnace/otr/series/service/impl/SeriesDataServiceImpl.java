@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 import com.blastfurnace.otr.data.series.SeriesService;
 import com.blastfurnace.otr.data.series.model.Series;
 import com.blastfurnace.otr.data.series.service.model.SeriesDataWrapper;
-import com.blastfurnace.otr.rest.request.QueryData;
 import com.blastfurnace.otr.series.service.SeriesDataService;
 import com.blastfurnace.otr.service.GenericService;
-import com.blastfurnace.otr.service.response.GenericResponse;
+import com.blastfurnace.otr.service.request.QueryData;
+import com.blastfurnace.otr.service.response.GenericServiceResponse;
 
 @Component("SeriesDataService")
 public class SeriesDataServiceImpl implements SeriesDataService {
@@ -30,7 +30,7 @@ public class SeriesDataServiceImpl implements SeriesDataService {
 	 * @see com.blastfurnace.otr.rest.adapter.SeriesDataAdapter#query(com.blastfurnace.otr.rest.request.QueryData)
 	 */
 	@Override
-	public GenericResponse<List<Map<String,Object>>> query(QueryData qry) {
+	public GenericServiceResponse<List<Map<String,Object>>> query(QueryData qry) {
 		return gService.query(qry, service);
 	}
 
@@ -38,7 +38,7 @@ public class SeriesDataServiceImpl implements SeriesDataService {
 	 * @see com.blastfurnace.otr.rest.adapter.SeriesDataAdapter#getResultsCount(com.blastfurnace.otr.rest.request.QueryData)
 	 */
 	@Override
-	public GenericResponse<Long> getResultsCount(QueryData qry) {
+	public GenericServiceResponse<Long> getResultsCount(QueryData qry) {
 		return gService.getResultsCount(qry, service);
 	}
 
@@ -46,7 +46,7 @@ public class SeriesDataServiceImpl implements SeriesDataService {
 	 * @see com.blastfurnace.otr.rest.adapter.SeriesDataAdapter#delete(java.lang.Long)
 	 */
 	@Override
-	public GenericResponse<String> delete(Long  id) {
+	public GenericServiceResponse<String> delete(Long  id) {
 		return gService.delete(id, service);
 	}
 
@@ -54,8 +54,8 @@ public class SeriesDataServiceImpl implements SeriesDataService {
 	 * @see com.blastfurnace.otr.rest.adapter.SeriesDataAdapter#save(com.blastfurnace.otr.model.Series)
 	 */
 	@Override
-	public GenericResponse<SeriesDataWrapper> save(SeriesDataWrapper series) {
-		GenericResponse<SeriesDataWrapper> response = new GenericResponse<SeriesDataWrapper>(null);
+	public GenericServiceResponse<SeriesDataWrapper> save(SeriesDataWrapper series) {
+		GenericServiceResponse<SeriesDataWrapper> response = new GenericServiceResponse<SeriesDataWrapper>(null);
 		if (series == null) {
 			response.setStatus(-50l);
 			response.setMessage("Unable to save Record - nothing to save");
@@ -83,8 +83,8 @@ public class SeriesDataServiceImpl implements SeriesDataService {
 	 * @see com.blastfurnace.otr.rest.adapter.SeriesDataAdapter#get(java.lang.Long)
 	 */
 	@Override
-	public GenericResponse<SeriesDataWrapper> get(Long id) {
-		GenericResponse<SeriesDataWrapper> response = new GenericResponse<SeriesDataWrapper>(null);
+	public GenericServiceResponse<SeriesDataWrapper> get(Long id) {
+		GenericServiceResponse<SeriesDataWrapper> response = new GenericServiceResponse<SeriesDataWrapper>(null);
 		try {
 			SeriesDataWrapper series = service.getComplex(id);
 			response.setPayload(series);
